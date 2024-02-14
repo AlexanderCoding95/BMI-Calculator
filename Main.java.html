@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">lab1alexandersadeghipour</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">Scene</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">control</span><span class="s2">.</span><span class="s1">Button</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">control</span><span class="s2">.</span><span class="s1">TextField</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">GridPane</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">stage</span><span class="s2">.</span><span class="s1">Stage</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">scene</span><span class="s2">.</span><span class="s1">control</span><span class="s2">.</span><span class="s1">Label</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">application</span><span class="s2">.</span><span class="s1">Application</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">javafx</span><span class="s2">.</span><span class="s1">geometry</span><span class="s2">.</span><span class="s1">Insets</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Main </span><span class="s0">extends </span><span class="s1">Application </span><span class="s2">{</span>
+
+    <span class="s0">private </span><span class="s1">Stage window</span><span class="s2">;</span>
+
+
+    <span class="s0">public </span><span class="s1">Scene buildScene</span><span class="s2">() {</span>
+        <span class="s3">//Specify names of the labels</span>
+        <span class="s1">Label heightLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Label</span><span class="s2">(</span><span class="s4">&quot;Height:&quot;</span><span class="s2">);</span>
+        <span class="s1">Label weightLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Label</span><span class="s2">(</span><span class="s4">&quot;Weight:&quot;</span><span class="s2">);</span>
+        <span class="s3">//Specify text field background text</span>
+        <span class="s1">TextField heightInput </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TextField</span><span class="s2">();</span>
+        <span class="s1">heightInput</span><span class="s2">.</span><span class="s1">setPromptText</span><span class="s2">(</span><span class="s4">&quot;Submit height here&quot;</span><span class="s2">);</span>
+        <span class="s1">TextField weightInput </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TextField</span><span class="s2">();</span>
+        <span class="s1">weightInput</span><span class="s2">.</span><span class="s1">setPromptText</span><span class="s2">(</span><span class="s4">&quot;Submit weight here&quot;</span><span class="s2">);</span>
+        <span class="s3">//Unit label</span>
+        <span class="s1">Label heightUnitLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Label</span><span class="s2">(</span><span class="s4">&quot;cm&quot;</span><span class="s2">);</span>
+        <span class="s1">Label weightUnitLabel </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Label</span><span class="s2">(</span><span class="s4">&quot;kg&quot;</span><span class="s2">);</span>
+
+
+        <span class="s1">Button calcButton </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Button</span><span class="s2">();</span>
+        <span class="s1">calcButton</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s4">&quot;Click&quot;</span><span class="s2">);</span>
+        <span class="s1">calcButton</span><span class="s2">.</span><span class="s1">setOnAction</span><span class="s2">(</span><span class="s1">e -&gt; </span><span class="s2">{</span>
+            <span class="s1">Double bmi </span><span class="s2">= </span><span class="s1">calculateBMI</span><span class="s2">(</span><span class="s1">heightInput</span><span class="s2">, </span><span class="s1">weightInput</span><span class="s2">);</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+                <span class="s1">displayBMI</span><span class="s2">(</span><span class="s1">bmi</span><span class="s2">);</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+
+        <span class="s1">GridPane grid </span><span class="s2">= </span><span class="s0">new </span><span class="s1">GridPane</span><span class="s2">();</span>
+        <span class="s1">grid</span><span class="s2">.</span><span class="s1">setPadding</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Insets</span><span class="s2">(</span><span class="s5">10</span><span class="s2">,</span><span class="s5">10</span><span class="s2">,</span><span class="s5">10</span><span class="s2">,</span><span class="s5">10</span><span class="s2">));</span>
+        <span class="s1">grid</span><span class="s2">.</span><span class="s1">setVgap</span><span class="s2">(</span><span class="s5">10</span><span class="s2">);</span>
+        <span class="s1">grid</span><span class="s2">.</span><span class="s1">setHgap</span><span class="s2">(</span><span class="s5">10</span><span class="s2">);</span>
+
+
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">heightLabel</span><span class="s2">, </span><span class="s5">0</span><span class="s2">,</span><span class="s5">0</span><span class="s2">);</span>
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">weightLabel</span><span class="s2">, </span><span class="s5">0</span><span class="s2">,</span><span class="s5">1</span><span class="s2">);</span>
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">heightInput</span><span class="s2">,</span><span class="s5">1</span><span class="s2">,</span><span class="s5">0</span><span class="s2">);</span>
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">weightInput</span><span class="s2">, </span><span class="s5">1</span><span class="s2">,</span><span class="s5">1</span><span class="s2">);</span>
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">heightUnitLabel</span><span class="s2">,</span><span class="s5">2</span><span class="s2">,</span><span class="s5">0</span><span class="s2">);</span>
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">weightUnitLabel</span><span class="s2">,</span><span class="s5">2</span><span class="s2">,</span><span class="s5">1</span><span class="s2">);</span>
+        <span class="s1">GridPane</span><span class="s2">.</span><span class="s1">setConstraints</span><span class="s2">(</span><span class="s1">calcButton</span><span class="s2">,</span><span class="s5">1</span><span class="s2">,</span><span class="s5">2</span><span class="s2">);</span>
+
+        <span class="s1">grid</span><span class="s2">.</span><span class="s1">getChildren</span><span class="s2">().</span><span class="s1">addAll</span><span class="s2">(</span><span class="s1">heightLabel</span><span class="s2">, </span><span class="s1">weightLabel</span><span class="s2">, </span><span class="s1">heightInput</span><span class="s2">, </span><span class="s1">weightInput</span><span class="s2">,</span>
+                <span class="s1">heightUnitLabel</span><span class="s2">,</span><span class="s1">weightUnitLabel</span><span class="s2">,</span><span class="s1">calcButton</span><span class="s2">);</span>
+
+
+
+        <span class="s0">return new </span><span class="s1">Scene</span><span class="s2">(</span><span class="s1">grid</span><span class="s2">, </span><span class="s5">300</span><span class="s2">,</span><span class="s5">120</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">Double calculateBMI</span><span class="s2">(</span><span class="s1">TextField heightInput</span><span class="s2">, </span><span class="s1">TextField weightInput</span><span class="s2">) {</span>
+        <span class="s1">Double bmi </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s0">double </span><span class="s1">height </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">heightInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">()) / </span><span class="s5">100</span><span class="s2">;</span>
+            <span class="s0">double </span><span class="s1">weight </span><span class="s2">= </span><span class="s1">Double</span><span class="s2">.</span><span class="s1">parseDouble</span><span class="s2">(</span><span class="s1">weightInput</span><span class="s2">.</span><span class="s1">getText</span><span class="s2">());</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">height </span><span class="s2">&lt;= </span><span class="s5">0 </span><span class="s2">|| </span><span class="s1">weight </span><span class="s2">&lt;= </span><span class="s5">0</span><span class="s2">) {</span>
+                <span class="s0">throw new </span><span class="s1">IllegalArgumentException</span><span class="s2">();</span>
+            <span class="s2">}</span>
+            <span class="s1">bmi </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Double</span><span class="s2">(</span><span class="s1">weight </span><span class="s2">/ (</span><span class="s1">height </span><span class="s2">* </span><span class="s1">height</span><span class="s2">));</span>
+        <span class="s2">} </span><span class="s0">catch</span><span class="s2">(</span><span class="s1">NumberFormatException e1</span><span class="s2">) {</span>
+            <span class="s1">Box2</span><span class="s2">.</span><span class="s1">display</span><span class="s2">(</span><span class="s4">&quot;Error&quot;</span><span class="s2">, </span><span class="s4">&quot;Letters are not allowed in this scope&quot;</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch</span><span class="s2">(</span><span class="s1">IllegalArgumentException e2</span><span class="s2">) {</span>
+            <span class="s1">Box2</span><span class="s2">.</span><span class="s1">display</span><span class="s2">(</span><span class="s4">&quot;Error&quot;</span><span class="s2">, </span><span class="s4">&quot;Positive numbers only&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">heightInput</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">);</span>
+            <span class="s1">weightInput</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s4">&quot;&quot;</span><span class="s2">);</span>
+        <span class="s2">}</span>
+
+        <span class="s0">return </span><span class="s1">bmi</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">displayBMI</span><span class="s2">(</span><span class="s0">double </span><span class="s1">bmi</span><span class="s2">) {</span>
+        <span class="s1">String message</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">&gt;=</span><span class="s5">35</span><span class="s2">) {</span>
+            <span class="s1">message </span><span class="s2">= </span><span class="s4">&quot;are extremely obese and should see a local doctor immediately&quot;</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">&gt;= </span><span class="s5">30</span><span class="s2">) {</span>
+            <span class="s1">message </span><span class="s2">= </span><span class="s4">&quot;are moderately obese&quot;</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">&gt;= </span><span class="s5">25</span><span class="s2">) {</span>
+            <span class="s1">message </span><span class="s2">= </span><span class="s4">&quot;are slightly overweight&quot;</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">&gt;= </span><span class="s5">18.5</span><span class="s2">) {</span>
+            <span class="s1">message </span><span class="s2">= </span><span class="s4">&quot;have a healthy weight&quot;</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">else if </span><span class="s2">(</span><span class="s1">bmi </span><span class="s2">&gt;= </span><span class="s5">16</span><span class="s2">) {</span>
+            <span class="s1">message </span><span class="s2">= </span><span class="s4">&quot;are underweight and should see a local doctor immediately&quot;</span><span class="s2">;</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">message </span><span class="s2">= </span><span class="s4">&quot;are extremely underweight and should see a local doctor immediately&quot;</span><span class="s2">;</span>
+        <span class="s2">}</span>
+        <span class="s1">Box2</span><span class="s2">.</span><span class="s1">display</span><span class="s2">(</span><span class="s4">&quot;Result&quot;</span><span class="s2">, </span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s4">&quot;Your BMI is %.2f,</span><span class="s0">\n </span><span class="s4">You %s.&quot;</span><span class="s2">,</span><span class="s1">bmi</span><span class="s2">, </span><span class="s1">message</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">start</span><span class="s2">(</span><span class="s1">Stage primaryStage</span><span class="s2">) {</span>
+        <span class="s1">window </span><span class="s2">= </span><span class="s1">primaryStage</span><span class="s2">;</span>
+        <span class="s1">window</span><span class="s2">.</span><span class="s1">setTitle</span><span class="s2">(</span><span class="s4">&quot;Individual Health Assessment Program&quot;</span><span class="s2">);</span>
+
+        <span class="s1">Scene scene </span><span class="s2">= </span><span class="s1">buildScene</span><span class="s2">();</span>
+        <span class="s1">window</span><span class="s2">.</span><span class="s1">setScene</span><span class="s2">(</span><span class="s1">scene</span><span class="s2">);</span>
+
+        <span class="s1">window</span><span class="s2">.</span><span class="s1">setOnCloseRequest</span><span class="s2">(</span><span class="s1">e -&gt; </span><span class="s2">{</span>
+            <span class="s1">e</span><span class="s2">.</span><span class="s1">consume</span><span class="s2">();</span>
+            <span class="s1">Boolean response </span><span class="s2">= </span><span class="s1">Box1</span><span class="s2">.</span><span class="s1">display</span><span class="s2">(</span><span class="s4">&quot;End program&quot;</span><span class="s2">, </span><span class="s4">&quot;Would you like to exit?&quot;</span><span class="s2">);</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">response </span><span class="s2">!= </span><span class="s0">null </span><span class="s2">&amp;&amp; </span><span class="s1">response </span><span class="s2">== </span><span class="s0">true</span><span class="s2">) {</span>
+                <span class="s1">window</span><span class="s2">.</span><span class="s1">close</span><span class="s2">();</span>
+            <span class="s2">}</span>
+        <span class="s2">});</span>
+
+        <span class="s1">window</span><span class="s2">.</span><span class="s1">show</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+        <span class="s1">launch</span><span class="s2">(</span><span class="s1">args</span><span class="s2">);</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
