@@ -1,4 +1,4 @@
-package com.example.lab1alexandersadeghipour;
+
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
